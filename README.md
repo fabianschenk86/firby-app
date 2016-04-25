@@ -9,7 +9,7 @@
 <h4>Available Panel Fields:</h4>
 <ul>
 <li>All basic fields from Kirby CMS</li>
-<li><a href="http://www.getkirby-plugins.com/geolocation>Geolocation (Location Picker)</a></li>
+<li><a href="http://www.getkirby-plugins.com/geolocation>Geolocation</a></li>
 <li><a href="http://www.getkirby-plugins.com/selector">Selector</a></li>
 <li><a href="http://www.getkirby-plugins.com/multiselect-field">Multiselect Field</a></li>
 <li>(more custom fields coming soon)</li>
