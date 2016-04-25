@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
-* Firby Application Plugin                                                                      *
+* Firby Application - Plugin                                                                      *
 *                                                                              *
 * Version: 1.0.0                                                                 *
 * Date:    2016-04-16                                                          *
@@ -27,8 +27,7 @@ if(get('firby-username') and get('firby-password') ){
 				if (in_array(get('firby-uri'), $history)) {
 					$history = array_diff($history, array($value));
 					array_unshift($history, $value);
-				}
-				else{
+				}else{
 					array_unshift($history, $value);
 				}
 				if(count($history)>5){
@@ -87,18 +86,16 @@ if(get('firby-username') and get('firby-password') ){
 						);
 					}						
 					$json['navigation'] = $navigation;
-
                     if($avatar = $currentuser->avatar()){
 						$imageData = base64_encode(file_get_contents($currentuser->avatarRoot()));
 						$type = pathinfo($avatar, PATHINFO_EXTENSION);
 						$avatar_base64 = 'data:image/'.$type.';base64,'.$imageData;		
 					}
 					if($currentuser->email()!= '' && $currentuser->username()!= ''){
-						
 						$history = array();
 						if($histories = $currentuser->history()){
 							foreach($histories as $value) {
-								if($value!=''){
+								if($value!='' && page($value)!=''){
 									$history[] = array(
 										'title' => (string)page($value)->title(),
 										'uri'=> (string)$value
@@ -126,7 +123,14 @@ if(get('firby-username') and get('firby-password') ){
 							);
 						}
 					}
-					$json['templates'] = $templates;			
+					$json['templates'] = $templates;
+					$users = array();
+					foreach(site()->users() as $singeluser){
+						if($singeluser->username()!= ''){
+							$users[] = (string)$singeluser->username();
+						}
+					}
+					$json['users'] = $users;	
 					$json['message'] = array('type'=>'success');
 					} catch(Exception $e) {
 						$json['message'] = array('type'=>'error');
@@ -278,56 +282,54 @@ if(get('firby-username') and get('firby-password') ){
 					}else{
 						$languagecode = '';
 					}
-					try {	
+					try {
+						$blueprints = data::read(kirby::instance()->roots()->blueprints().DS.'site.php', 'yaml');
 						foreach($_POST as $key => $value) {
-							if($key!='firby-username' && $key!='firby-password' &&  $key!='firby-type' && $key!='firby-checkboxes' && $key!='languagecode'){
-								if ($key == 'checkboxes') {
-									$optionArray = get('checkboxes');
-									$newvalue ='';
-									for ($i=0; $i<count($optionArray); $i++) {
-										 $newvalue += $optionArray[$i].',';
+							if($key!='firby-username' && $key!='firby-password' &&  $key!='firby-type' && $key!='firby-uri' && $key!='languagecode'){
+								if(is_array($value)){
+									if($blueprints['fields'][$key]['type'] == 'checkboxes'){
+										$newvalue = join(', ', $value);
+										site()->update(array($key=>$newvalue),$languagecode);
 									}
-									site()->update(array($key=>$newvalue),$languagecode);
-								}else if(is_array($value)){
-									
-									/*$currentpage->update(array($key=>$value),$languagecode);*/
-								
+									if($blueprints['fields'][$key]['type'] == 'structure'){
+										site()->update(array($key=>yaml::encode($value)),$languagecode);
+									}
 								}else{
 									site()->update(array($key=>$value),$languagecode);
 								}
 							}
 						}
  					 	$json['message'] = array('type'=>'success');
+						$json['data'] = array();
 					} catch(Exception $e) {
 						$json['message'] = array('type'=>'error');
 					}
 					break;	
 				case "updatepage":
-					$uri = get('firby-uri');
-					$template = get('firby-template');
 					if(get('languagecode')){
 						$languagecode = get('languagecode');
 					}else{
 						$languagecode = '';
 					}
-					try {	
+					try {
+						$blueprints = data::read(kirby::instance()->roots()->blueprints().DS.$currentpage->template().'.php', 'yaml');
 						foreach($_POST as $key => $value) {
-							if($key!='firby-username' && $key!='firby-password' &&  $key!='firby-type' && $key!='firby-uri' && $key!='firby-checkboxes' && $key!='languagecode'){
-								if ($key == 'checkboxes') {
-									$optionArray = get('checkboxes');
-									$newvalue ='';
-									for ($i=0; $i<count($optionArray); $i++) {
-										 $newvalue += $optionArray[$i].',';
+							if($key!='firby-username' && $key!='firby-password' &&  $key!='firby-type' && $key!='firby-uri' && $key!='languagecode'){
+								if(is_array($value)){
+									if($blueprints['fields'][$key]['type'] == 'checkboxes' || $blueprints['fields'][$key]['type'] == 'selector' || $blueprints['fields'][$key]['type'] ==  'multiselect'){
+										$newvalue = join(', ', $value);
+										$currentpage->update(array($key=>$newvalue),$languagecode);
 									}
-									$currentpage->update(array($key=>$newvalue),$languagecode);
-								}else if(is_array($value)){
-									$currentpage->update(array($key=>yaml::encode($value)),$languagecode);
+									if($blueprints['fields'][$key]['type'] == 'structure'){
+										$currentpage->update(array($key=>yaml::encode($value)),$languagecode);
+									}
 								}else{
 									$currentpage->update(array($key=>$value),$languagecode);
 								}
 							}
 						}
  					 	$json['message'] = array('type'=>'success');
+						$json['data'] = array('uri'=>get('firby-uri'),'title'=>(string)$currentpage->title());
 						$currentuser->update(array('history'=>changeuserhistory($currentuser,get('firby-uri'))));
 					} catch(Exception $e) {
 						$json['message'] = array('type'=>'error');
@@ -374,6 +376,7 @@ if(get('firby-username') and get('firby-password') ){
 								'modified'=>(string)$currentpage->modified('d/m/Y'),
 							);
 							$json['message'] = array('type'=>'success');
+							$currentuser->update(array('history'=>changeuserhistory($currentuser,get('firby-uri'))));
 						}else{
 							throw new Exception();
 						}
@@ -446,6 +449,21 @@ if(get('firby-username') and get('firby-password') ){
 						$json['message'] = array('type'=>'error');
 					}
 					break;
+				case "changeimage":
+					try{
+						/*$upload = upload(__DIR__ . DS . '{{safeName}}.jpg');*/
+						$encoded = get('imagedata');
+						$imgfile = $currentpage->root().'/'.get('filename');/*$currentpage->file(get('filename'))->url()*/
+       					 // convert the image data from base64
+        				$imgData = base64_decode(stripslashes(substr($encoded, 22)));
+						$fp = fopen($imgfile, 'w+');
+ 						fwrite($fp, $imgData);
+ 						fclose($fp);
+						$json['message'] = array('type'=>'success');
+					} catch(Exception $e){
+						$json['message'] = array('type'=>'error');
+					}
+					break;
 				case "imageupload":
 					if (get('imagedata') && get('imagepath')) {
 						try{
@@ -468,10 +486,13 @@ if(get('firby-username') and get('firby-password') ){
 					$filename = $_FILES['file']['tmp_name'];
 					try{
 						move_uploaded_file($filename, $filepath);
-						$json['message'] = array('type'=>'success');
+						$currentpage->reset();
 						$file = $currentpage->file($_FILES['file']['name']);
+						if(get('newfilename') !='' && get('newfilename')!= $filename){
+							$file->rename(get('newfilename',true));
+						}
 						$json['file'] = array(
-							'name'=>(string)$file->name(),
+							'name'=>$file->name(),
 							'mime'=>(string)$file->mime(),
 							'type'=>(string)$file->type(),
 							'extension'=>(string)$file->extension(),
@@ -481,7 +502,9 @@ if(get('firby-username') and get('firby-password') ){
 							'dir'=>(string)$file->dir(),
 							'url'=>(string)$file->url()
 						);
-							$currentuser->update(array('history'=>changeuserhistory($currentuser,get('firby-uri'))));
+						$json['data']=  array('uri'=>(string)$currentpage->uri(),'title'=>(string)$currentpage->title());
+						$json['message'] = array('type'=>'success');
+						$currentuser->update(array('history'=>changeuserhistory($currentuser,get('firby-uri'))));
 					} catch(Exception $e){
 						$json['message'] = array('type'=>'error');
 					}
@@ -490,8 +513,9 @@ if(get('firby-username') and get('firby-password') ){
 					$file = $currentpage->file(get('firby-filename'));
 					try {
   						$file->delete();
+						$json['data']=  array('uri'=>(string)$currentpage->uri(),'title'=>(string)$currentpage->title());
 						$json['message'] = array('type'=>'success');
-							$currentuser->update(array('history'=>changeuserhistory($currentuser,get('firby-uri'))));
+						$currentuser->update(array('history'=>changeuserhistory($currentuser,get('firby-uri'))));
 					} catch(Exception $e) {
 						$json['message'] = array('type'=>'error');
 					}
@@ -533,29 +557,35 @@ if(get('firby-username') and get('firby-password') ){
 					}
 					break;
 				case "userlist":
-					$users = array();
-					foreach(site()->users() as $singeluser){
-                    	if($avatar = $singeluser->avatar()){
-							/*$imageData = base64_encode(file_get_contents($user->avatarRoot()));
-							$type = pathinfo($avatar, PATHINFO_EXTENSION);
-							$avatar_base64 = 'data:image/'.$type.';base64,'.$imageData;*/
-							$avatar_url = $avatar->url();
-						}else {
-							$avatar_url ='';
+					try{
+						$users = array();
+						foreach(site()->users() as $singeluser){
+                    		if($singeluser->avatar()){
+								$imageData = base64_encode(file_get_contents($singeluser->avatarRoot()));
+								$type = pathinfo($singeluser->avatar(), PATHINFO_EXTENSION);
+								$avatar_base64 = 'data:image/'.$type.';base64,'.$imageData;
+								$avatar_url = $singeluser->avatar()->url();
+							}else {
+								$avatar_base64 ='';
+							}
+							if($singeluser->email()!= '' && $singeluser->username()!= ''){
+								$users[] = array(
+									'firstName'=>(string)$singeluser->firstName(),
+									'lastName'=>(string)$singeluser->lastName(),
+									'username'=>(string)$singeluser->username(),
+									'email'=>(string)$singeluser->email(),
+									'role'=>(string)$singeluser->role(),
+									'language'=>(string)$singeluser->language(),
+									'avatar'=> $avatar_base64
+								);
+							}
 						}
-						if($singeluser->email()!= '' && $singeluser->username()!= ''){
-							$users[] = array(
-								'firstName'=>(string)$singeluser->firstName(),
-								'lastName'=>(string)$singeluser->lastName(),
-								'username'=>(string)$singeluser->username(),
-								'email'=>(string)$singeluser->email(),
-								'role'=>(string)$singeluser->role(),
-								'language'=>(string)$singeluser->language(),
-								'avatar'=> $avatar_url
-							);
-						}
+						$json['users'] = $users;
+						$json['message'] = array('type'=>'success');	
+					} 
+					catch(Exception $e) {
+						$json['message'] = array('type'=>'error');
 					}
-					$json['users'] = $users;
 					break;	
 				case "updateuser":
 					try{
@@ -588,6 +618,14 @@ if(get('firby-username') and get('firby-password') ){
 						}
 					$json['user'] = $userinfo;
 					break;
+				case "getimagedata":
+					/*$imageData = base64_encode(file_get_contents($currentuser->avatarRoot()));
+						$type = pathinfo($avatar, PATHINFO_EXTENSION);
+						$avatar_base64 = 'data:image/'.$type.';base64,'.$imageData;*/	
+						$currentfile = $currentpage->file(get('filename'));
+					$json['imagedata'] = 'data:'.$currentfile->type().'/'.$currentfile->extension().';base64,'.$currentfile->base64();
+					$json['message'] = array('type'=>'success');
+					break;
 				default:
 					$json['message'] = array(
 						'type'=>'error',
@@ -595,15 +633,14 @@ if(get('firby-username') and get('firby-password') ){
 						'message'=>'Type value not exist or is wrong'
 					);
 			}// end switch -> type
-		}
-		else {
+		}else {
 			$json['message'] = array(
 				'type'=>'noPanelAccess',
 				'subject'=>'noPanelAccess',
 			);
 		}// end check Panel Access
-	}
-	else {
+		$user->logout();
+	}else {
 		$json['message'] = array(
 			'type'=>'noUser',
 			'subject'=>'errorLogin',
