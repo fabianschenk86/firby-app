@@ -29,4 +29,4 @@ site/
 		firby.php
 ```
 <br /><h4>2. Download the Firby App from the Google Play Store.</h4>
-<img alt="qr-code-google-play" align="right" width="200px" height="auto" src="http://www.rwitc.com/images/newdesign/rwitc_play_store_qrcode.png"/>
+<img alt="qr-code-google-play" align="right" width="200px" height="auto" src="https://chart.googleapis.com/chart?chs=116x116&cht=qr&chl=https://build.phonegap.com/apps/1769355/install/dQYi87ZuuiwaDwcED3a6&chld=L|1&choe=UTF-8"/>
