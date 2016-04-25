@@ -1,7 +1,8 @@
 <h1>firby app - kirby cms</h1>
+<div>
 <img alt="logo" align="left" src="https://github.com/fabianschenk86/firby-app/blob/master/firby_logo.png"/>
-<p>Publish and manage your website content on the go, from anywhere in the world. With Firby App you can create and edit posts or pages, and upload or download media. All you need is a website created with <a target="_blank" href="https://getkirby.com/">Kirby CMS</a> with the Firby-Plugin and your Android device.</p><br/><br/><br/>
-
+<p>Publish and manage your website content on the go, from anywhere in the world. With Firby App you can create and edit posts or pages, and upload or download media. All you need is a website created with <a target="_blank" href="https://getkirby.com/">Kirby CMS</a> with the Firby-Plugin and your Android device.</p>
+</div>
 
 <h2>Features include:</h2>
 <h3>Image Editor</h3>
