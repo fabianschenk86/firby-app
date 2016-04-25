@@ -6,25 +6,27 @@
 <h2 id="firby-features">Features include:</h2>
 <h4>Image Editor</h4>
 <p>The Image Editor takes pixel data from a photo that you want to give filter effects, and maniplute its pixels à la Instagram-Filter. The finished photo can be saved as JPG or PNG.</p>
-
 <br /><h4 id="firby-languages">Multi languages:</h4>
 <p>Firby App is available in the same languages like Kirby CMS:</p>
 *English, German, French, Italian, Spanish, Swedish, Finnish, Dutch, Czech, Danish, Hungarian, Indonesian, Polish, Romanian, Turkish, Portuguese (Brazil), Norwegian (Bokmål), Russian, Persian (Farsi), Arabicm, Chinese (Simplified), Chinese (Traditional), Japanese, Bulgarian, Catalan*
-
 <br /><h4 id="firby-coming-soon">Coming soon:</h4>
 <ul>
 <li>view your stats</li>
 <li>moderate comments</li>
 <li>Push Notifications</li>
+<li>Firby App for:
+<ol>- Windows Phone</ol>
+<ol>- iPhone/iOS</ol>
+</li>
 </ul>
 <br />
 <h2 id="firby-installation">Installation:</h2>
-
-<h4>Copy & Pasting</h4>
+<h4>1. Copy & Pasting the "firby.php" file to your Server</h4>
 <p>If not already existing, add a new <code>plugins</code> folder to your <code>site</code> directory. Then copy or link this repositories whole content in there. Afterwards, your directory structure should look like this:</p>
-
 ```yaml
 site/
 	plugins/
 		firby.php
 ```
+<br /><h4>2. Download the Firby App from the Google Play Store.</h4>
+<img alt="qr-code-google-play" align="right" width="200px" height="auto" src="http://www.rwitc.com/images/newdesign/rwitc_play_store_qrcode.png"/>
