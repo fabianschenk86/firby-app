@@ -1,6 +1,6 @@
 # firby-app#
 
-Publish and manage your website content on the go, from anywhere in the world. With Firby App you can create and edit posts or pages, and upload or download media. All you need is a website created with Kirby CMS with the Firby-Plugin and a your Android device.
+Publish and manage your website content on the go, from anywhere in the world. With Firby App you can create and edit posts or pages, and upload or download media. All you need is a website created with [Kirby CMS](https://getkirby.com/) with the Firby-Plugin and your Android device.
 
 ##Image Editor
 
