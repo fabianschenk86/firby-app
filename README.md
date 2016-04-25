@@ -4,8 +4,8 @@ Publish and manage your website content on the go, from anywhere in the world. W
 
 ##Image Editor
 
-The Image Editor take pixel data from a photo that you want to give filter effects, and maniplute its pixels à la Instagram-Filter. 
-The finished photo can be saveded as jpeg or png.
+The Image Editor takes pixel data from a photo that you want to give filter effects, and maniplute its pixels à la Instagram-Filter. 
+The finished photo can be saved as jpg or png.
 
 ##Coming soon:
 - view your stats
