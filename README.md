@@ -18,3 +18,14 @@ Firby App is available in the same languages like Kirby CMS:
 
 *English, German, French, Italian, Spanish, Swedish, Finnish, Dutch, Czech, Danish, Hungarian, Indonesian, Polish, Romanian, Turkish, Portuguese (Brazil), Norwegian (Bokmål), Russian, Persian (Farsi), Arabicm, Chinese (Simplified), Chinese (Traditional), Japanese, Bulgarian, Catalan*
 
+## Installation
+
+### Copy & Pasting
+
+If not already existing, add a new `plugins` folder to your `site` directory. Then copy or link this repositories whole content in there. Afterwards, your directory structure should look like this:
+
+```yaml
+site/
+	plugins/
+		firby.php
+```
