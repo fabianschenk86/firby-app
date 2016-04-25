@@ -9,16 +9,16 @@
 <h4>Available Panel Fields:</h4>
 <ul>
 <li>All basic fields from Kirby CMS</li>
-<li><a href="http://www.getkirby-plugins.com/geolocation>Geolocation</a></li>
-<li><a href="http://www.getkirby-plugins.com/selector">Selector</a></li>
-<li><a href="http://www.getkirby-plugins.com/multiselect-field">Multiselect Field</a></li>
+<li><a title="Geolocation" href="http://www.getkirby-plugins.com/geolocation">Geolocation (Location Picker)</a></li>
+<li><a title="Selector" href="http://www.getkirby-plugins.com/selector">Selector</a></li>
+<li><a title="Multiselect Field" href="http://www.getkirby-plugins.com/multiselect-field">Multiselect Field</a></li>
 <li>(more custom fields coming soon)</li>
 </ul>
-<h4>Image Editor</h4>
+<br /><h4>Image Editor</h4>
 <p>The Image Editor takes pixel data from a photo that you want to give filter effects, and maniplute its pixels à la Instagram-Filter. The finished photo can be saved as JPG or PNG.</p>
 <br /><h4 id="firby-languages">Multi languages:</h4>
-<p>Firby App is available in the same languages like Kirby CMS:</p>
-*English, German, French, Italian, Spanish, Swedish, Finnish, Dutch, Czech, Danish, Hungarian, Indonesian, Polish, Romanian, Turkish, Portuguese (Brazil), Norwegian (Bokmål), Russian, Persian (Farsi), Arabicm, Chinese (Simplified), Chinese (Traditional), Japanese, Bulgarian, Catalan*
+<p>Firby App is available in the same languages like Kirby CMS:<br />
+<em>English, German, French, Italian, Spanish, Swedish, Finnish, Dutch, Czech, Danish, Hungarian, Indonesian, Polish, Romanian, Turkish, Portuguese (Brazil), Norwegian (Bokmål), Russian, Persian (Farsi), Arabicm, Chinese (Simplified), Chinese (Traditional), Japanese, Bulgarian, Catalan</em></p>
 <br /><h4 id="firby-coming-soon">Coming soon:</h4>
 <ul>
 <li>view your stats</li>
