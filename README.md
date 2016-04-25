@@ -1,6 +1,6 @@
 # firby app - kirby cms#
-![Logo](https://github.com/fabianschenk86/firby-app/blob/master/firby_logo.png){:style="float: left;margin-right: 7px;margin-top: 7px;"}
-Publish and manage your website content on the go, from anywhere in the world. With Firby App you can create and edit posts or pages, and upload or download media. All you need is a website created with [Kirby CMS](https://getkirby.com/){:target="_blank"} with the Firby-Plugin and your Android device.
+![Logo](https://github.com/fabianschenk86/firby-app/blob/master/firby_logo.png)
+Publish and manage your website content on the go, from anywhere in the world. With Firby App you can create and edit posts or pages, and upload or download media. All you need is a website created with [Kirby CMS](https://getkirby.com/) with the Firby-Plugin and your Android device.
 
 ##Image Editor
 
@@ -17,6 +17,34 @@ The finished photo can be saved as JPG or PNG.
 Firby App is available in the same languages like Kirby CMS:
 
 *English, German, French, Italian, Spanish, Swedish, Finnish, Dutch, Czech, Danish, Hungarian, Indonesian, Polish, Romanian, Turkish, Portuguese (Brazil), Norwegian (Bokmål), Russian, Persian (Farsi), Arabicm, Chinese (Simplified), Chinese (Traditional), Japanese, Bulgarian, Catalan*
+
+<h2>Example of code</h2>
+
+<pre>
+    <div class="container">
+        <div class="block two first">
+            <h2>Your title</h2>
+            <div class="wrap">
+            //Your content
+            </div>
+        </div>
+    </div>
+</pre>
+
+```html
+<h2>Example of code</h2>
+
+<pre>
+    <div class="container">
+        <div class="block two first">
+            <h2>Your title</h2>
+            <div class="wrap">
+            //Your content
+            </div>
+        </div>
+    </div>
+</pre>
+```
 
 ## Installation
 
