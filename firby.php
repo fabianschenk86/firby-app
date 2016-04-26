@@ -90,6 +90,8 @@ if(get('firby-username') and get('firby-password') ){
 						$imageData = base64_encode(file_get_contents($currentuser->avatarRoot()));
 						$type = pathinfo($avatar, PATHINFO_EXTENSION);
 						$avatar_base64 = 'data:image/'.$type.';base64,'.$imageData;		
+					}else{
+						$avatar_base64 ='';
 					}
 					if($currentuser->email()!= '' && $currentuser->username()!= ''){
 						$history = array();
