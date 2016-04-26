@@ -1,6 +1,6 @@
 <h1>firby app - kirby cms</h1>
 
-<img alt="logo" align="left" src="https://github.com/fabianschenk86/firby-app/blob/master/firby_logo.png"/>
+<img alt="logo" align="left" src="https://github.com/fabianschenk86/firby-app/blob/master/img/firby_logo.png"/>
 <p>Publish and manage your website content on the go, from anywhere in the world. With Firby App you can create and edit posts or pages, and upload or download media. All you need is a website created with <a target="_blank" href="https://getkirby.com/">Kirby CMS</a> with the <code>Firby-Plugin</code> and your <code>Android device</code>.<br /><br /><a href='https://play.google.com/store/apps/details?id=com.phonegap.mingbai_travel&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img align="right" width="150px" height="auto" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a></p><br />
 <hr width="100%"/>
 <h2 id="firby-features">Features include:</h2>
@@ -39,18 +39,17 @@ site/
 		firby.php
 ```
 <br /><h4>2. Download the Firby App from the Google Play Store.</h4>
-<img alt="qr-code-google-play" align="right" width="200px" height="auto" src="https://github.com/fabianschenk86/firby-app/blob/master/qr_code_googleplay.png"/>
+<img alt="qr-code-google-play" align="right" width="200px" height="auto" src="https://github.com/fabianschenk86/firby-app/blob/master/img/qr_code_googleplay.png"/>
 <hr width="100%">
-<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/login.JPG?raw=true"/>
-<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/dashboard.JPG?raw=true"/>
-<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/mainmenu.JPG?raw=true"/>
-<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/contentside.JPG?raw=true"/>
-<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/subpages.JPG?raw=true"/>
-<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/newpage.JPG?raw=true"/>
-<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/files.JPG?raw=true"/>
-<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/image%20editor.JPG?raw=true"/>
-<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/userlist.JPG?raw=true"/>
-<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/validation.JPG?raw=true"/>
-<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/edit-user.JPG?raw=true"/>
-<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/upload%20avatar.JPG?raw=true"/>
-<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/create%20new%20user.JPG?raw=true"/>
+<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/login.JPG?raw=true"/> <img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/dashboard.JPG?raw=true"/>
+<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/mainmenu.JPG?raw=true"/>
+<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/contentside.JPG?raw=true"/>
+<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/subpages.JPG?raw=true"/>
+<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/newpage.JPG?raw=true"/>
+<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/files.JPG?raw=true"/>
+<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/image%20editor.JPG?raw=true"/>
+<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/userlist.JPG?raw=true"/>
+<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/validation.JPG?raw=true"/>
+<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/edit-user.JPG?raw=true"/>
+<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/upload%20avatar.JPG?raw=true"/>
+<img align="left" width="153px" height="272px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/create%20new%20user.JPG?raw=true"/>
