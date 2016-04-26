@@ -41,5 +41,5 @@ site/
 <br /><h4>2. Download the Firby App from the Google Play Store.</h4>
 <img alt="qr-code-google-play" align="right" width="200px" height="auto" src="https://chart.googleapis.com/chart?chs=116x116&cht=qr&chl=https://build.phonegap.com/apps/1769355/install/dQYi87ZuuiwaDwcED3a6&chld=L|1&choe=UTF-8"/>
 <hr width="100%">
-<img align="left" width="49%" height="auto" src="https://github.com/fabianschenk86/firby-app/blob/master/snippet1.png?raw=true"/>
-<img width="49%" height="auto" src="https://github.com/fabianschenk86/firby-app/blob/master/snippet2.png?raw=true"/>
+<img align="left" width="48.5%" height="auto" src="https://github.com/fabianschenk86/firby-app/blob/master/snippet1.png?raw=true"/>
+<img width="48.5%" height="auto" src="https://github.com/fabianschenk86/firby-app/blob/master/snippet2.png?raw=true"/>
