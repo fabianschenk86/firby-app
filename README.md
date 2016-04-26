@@ -42,7 +42,7 @@ site/
 <img alt="qr-code-google-play" align="right" width="200px" height="auto" src="https://chart.googleapis.com/chart?chs=116x116&cht=qr&chl=https://build.phonegap.com/apps/1769355/install/dQYi87ZuuiwaDwcED3a6&chld=L|1&choe=UTF-8"/>
 <hr width="100%">
 <img align="left" width="153px" height="auto" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/login.JPG?raw=true"/>
-<img align="left" width="153px" height="auto" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/>dashboard.JPG?raw=true"/>
+<img align="left" width="153px" height="auto" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/dashboard.JPG?raw=true"/>
 <img align="left" width="153px" height="auto" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/mainmenu.JPG?raw=true"/>
 <img align="left" width="153px" height="auto" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/contentside.JPG?raw=true"/>
 <img align="left" width="153px" height="auto" src="https://github.com/fabianschenk86/firby-app/blob/master/Neuer%20Ordner/subpages.JPG?raw=true"/>
