@@ -40,7 +40,7 @@ site/
 		firby.php
 ```
 <br /><h4>2. Download the Firby App from the Google Play Store.</h4>
-<p>First users can test Firby for free. All you need to do is ask me for an promation code which you can use in Google Play Store and then give me feedback about Bugs and recommendations</p>
+<p>First users can test Firby for free. All you need to do is ask me for an promation code which you can use in Google Play Store and then give me feedback about bugs and your recommendations</p>
 <img alt="qr-code-google-play" align="right" width="200px" height="auto" src="https://github.com/fabianschenk86/firby-app/blob/master/img/qr_code_googleplay.png"/>
 <hr width="99%">
 <img align="left" width="141px" height="250px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/login.JPG?raw=true"/> <img align="left" width="141px" height="250px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/dashboard.JPG?raw=true"/>
