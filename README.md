@@ -15,7 +15,7 @@
 <li>(more custom fields coming soon)</li>
 </ul>
 <br /><h4>Image Editor</h4>
-<p>The Image Editor takes pixel data from a photo that you want to give filter effects, and maniplute its pixels à la Instagram-Filter. The finished photo can be saved as JPG or PNG.</p>
+<p>The Image Editor takes pixel data from a photo that you want to give filter effects, and manipulate its pixels à la Instagram-Filter. The finished photo can be saved as JPG or PNG.</p>
 <br /><h4 id="firby-languages">Multi languages:</h4>
 <p>Firby App is available in the same languages like Kirby CMS:<br /><br />
 <em>English, German, French, Italian, Spanish, Swedish, Finnish, Dutch, Czech, Danish, Hungarian, Indonesian, Polish, Romanian, Turkish, Portuguese (Brazil), Norwegian (Bokmål), Russian, Persian (Farsi), Arabicm, Chinese (Simplified), Chinese (Traditional), Japanese, Bulgarian, Catalan</em></p>
