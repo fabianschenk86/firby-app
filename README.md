@@ -64,3 +64,6 @@ Am hohen Ufer 3<br/>
 59955 Winterberg<br/>
 Germany<br/>
 Email: fabianschenk86@googlemail.com<br/>
+<br/>
+<strong>VAT Identification</strong><br/>
+<p>Due to VAT laws in the European Union (EU), Google is responsible for determining, charging, and remitting VAT for all Google Play Store digital content purchases by EU customers. Google will send VAT for EU customers' digital content purchases to the appropriate authority.</p>
