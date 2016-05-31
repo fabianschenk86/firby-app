@@ -269,11 +269,8 @@ if(get('firby-username') and get('firby-password') ){
 							'mime'=>(string)$file->mime(),
 							'type'=>(string)$file->type(),
 							'extension'=>(string)$file->extension(),
-							'size'=>(string)$file->size(),
-							'modified'=>(string)$file->modified('d/m/Y'),
 							'filename'=>(string)$file->filename(),
-							'dir'=>(string)$file->dir(),
-							'url'=>(string)$file->url()
+							'url'=>(string)$file->url(),
 						);
 					}
 					$json['files'] = $files;
@@ -494,15 +491,13 @@ if(get('firby-username') and get('firby-password') ){
 							$file->rename(get('newfilename',true));
 						}
 						$json['file'] = array(
-							'name'=>$file->name(),
+							'name'=>(string)$file->name(),
 							'mime'=>(string)$file->mime(),
 							'type'=>(string)$file->type(),
 							'extension'=>(string)$file->extension(),
-							'size'=>(string)$file->size(),
-							'modified'=>(string)$file->modified('d/m/Y'),
 							'filename'=>(string)$file->filename(),
 							'dir'=>(string)$file->dir(),
-							'url'=>(string)$file->url()
+							'url'=>(string)$file->url(),
 						);
 						$json['data']=  array('uri'=>(string)$currentpage->uri(),'title'=>(string)$currentpage->title());
 						$json['message'] = array('type'=>'success');
@@ -534,7 +529,8 @@ if(get('firby-username') and get('firby-password') ){
 								$json['data'] = array(
 									'name'=>(string)$newfile->name(),
 									'filename'=>(string)$newfile->filename(),
-									'url'=>(string)$newfile->url()
+									'url'=>(string)$newfile->url(),
+									'modified'=>(string)$newfile->modified('d/m/Y')
  								);
 							}else{
 								throw new Exception();
@@ -542,6 +538,56 @@ if(get('firby-username') and get('firby-password') ){
 						}else{
 							throw new Exception();
 						}
+					} catch(Exception $e) {
+						$json['message'] = array('type'=>'error');
+					}
+					break;
+				case "updatemetadata":
+					if(get('languagecode')){
+						$languagecode = get('languagecode');
+					}else{
+						$languagecode = '';
+					}
+					$currentfile = $currentpage->file(get('firby-filename'));
+					try {
+						foreach($_POST as $key => $value) {
+							if($key!='firby-username' && $key!='firby-password' &&  $key!='firby-type' && $key!='firby-uri' && $key!='firby-filename' && $key!='languagecode'){
+								$currentfile->update(array($key=>$value),'de');	
+							}
+						}
+						$json['message'] = array('type'=>'success');
+					} catch(Exception $e) {
+						$json['message'] = array('type'=>'error');
+					}
+					break;
+				case "getmetadata":
+					if(get('languagecode')){
+						$languagecode = get('languagecode');
+					}else{
+						$languagecode = '';
+					}
+					try {
+						$currentfile = $currentpage->file(get('firby-filename'));
+						if($currentfile->type()== 'image'){
+							$dimension = (string)$currentfile->dimensions();
+						}else{
+							$dimension = '0x0';
+						}
+						/*$file->textfile($languagecode) --- Returns the root for the meta file of the file*/
+						$json['fileinfo'] = array(
+							'mime'=>(string)$currentfile->mime(),
+							'type'=>(string)$currentfile->type(),
+							'extension'=>(string)$currentfile->extension(),
+							'filename'=>(string)$currentfile->filename(),
+							'name'=>(string)$currentfile->name(),
+							'url'=>(string)$currentfile->url(),
+							'uri'=>(string)$currentfile->uri(),
+							'modified'=>(string)$currentfile->modified('d/m/Y'),
+							'size'=>(string)$currentfile->size(),
+							'dimension'=>$dimension
+						);
+						$json['metadata'] = $currentfile->meta()->toArray();
+						$json['message'] = array('type'=>'success');
 					} catch(Exception $e) {
 						$json['message'] = array('type'=>'error');
 					}
@@ -624,7 +670,7 @@ if(get('firby-username') and get('firby-password') ){
 					/*$imageData = base64_encode(file_get_contents($currentuser->avatarRoot()));
 						$type = pathinfo($avatar, PATHINFO_EXTENSION);
 						$avatar_base64 = 'data:image/'.$type.';base64,'.$imageData;*/	
-						$currentfile = $currentpage->file(get('filename'));
+					$currentfile = $currentpage->file(get('filename'));
 					$json['imagedata'] = 'data:'.$currentfile->type().'/'.$currentfile->extension().';base64,'.$currentfile->base64();
 					$json['message'] = array('type'=>'success');
 					break;
