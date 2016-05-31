@@ -16,15 +16,15 @@
 <li>(more custom fields coming soon)</li>
 </ul>
 <br /><h4>Image Editor</h4>
-<p>The Image Editor takes pixel data from a photo that you want to give filter effects, and manipulate its pixels à la Instagram-Filter. The finished photo can be saved as JPG or PNG.</p>
+<p>The Image Editor takes pixel data from a photo that you want to give filter effects, and manipulate its pixels à la Instagram-Filter. Also you can resize and flip/rotate your Images. The finished photo can be saved as JPG or PNG.</p>
 <br /><h4 id="firby-languages">Multi languages:</h4>
 <p>Firby App is available in the same languages like Kirby CMS:<br /><br />
 <em>English, German, French, Italian, Spanish, Swedish, Finnish, Dutch, Czech, Danish, Hungarian, Indonesian, Polish, Romanian, Turkish, Portuguese (Brazil), Norwegian (Bokmål), Russian, Persian (Farsi), Arabic, Chinese (Simplified), Chinese (Traditional), Japanese, Bulgarian, Catalan</em></p>
 <br /><h4 id="firby-coming-soon">Coming soon:</h4>
 <ul>
-<li>view your stats</li>
 <li>moderate comments</li>
 <li>Push Notifications</li>
+<li>Texteditor with Markdown to Html - Html to Markdown Converter</li>
 <li>Firby App for:
 <ol>- Windows Phone</ol>
 <ol>- iPhone/iOS</ol>
