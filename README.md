@@ -55,3 +55,11 @@ site/
 <img align="left" width="141px" height="250px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/edit-user.JPG?raw=true"/>
 <img align="left" width="141px" height="250px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/upload%20avatar.JPG?raw=true"/>
 <img align="left" width="141px" height="250px" src="https://github.com/fabianschenk86/firby-app/blob/master/img/create%20new%20user.JPG?raw=true"/>
+<h2>Imprint</h2>
+<strong>Responsible in the sense of § 55 RStV</strong>
+<br/>
+Fabian Schenk<br/>
+Am hohen Ufer 3<br/>
+59955 Winterberg<br/>
+Germany<br/>
+Email: fabianschenk86@googlemail.com<br/>
