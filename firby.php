@@ -1,12 +1,11 @@
 <?php
-/*******************************************************************************
-* Firby Application - Plugin                                                                      *
-*                                                                              *
-* Version: 1.0.0                                                                 *
-* Date:    2016-04-16                                                          *
-* Author:  Fabian Schenk   
-* Copyright (c) 2016 Fabian Schenk <fabianschenk86@googlemail.com>, http://firby.lima-city.de                                         *
-*******************************************************************************/
+/**********************************************************************************************
+* Firby Application - Plugin                                                                  *
+* Version: 1.0.2                                                                              *
+* Date:    2016-05-31                                                                         *
+* Author:  Fabian Schenk                                                                      *
+* Copyright (c) 2016 Fabian Schenk <fabianschenk86@googlemail.com>, http://firby.lima-city.de *
+***********************************************************************************************/
 
 if(get('firby-username') and get('firby-password') ){
 	header('Access-Control-Allow-Origin: *');
@@ -552,7 +551,7 @@ if(get('firby-username') and get('firby-password') ){
 					try {
 						foreach($_POST as $key => $value) {
 							if($key!='firby-username' && $key!='firby-password' &&  $key!='firby-type' && $key!='firby-uri' && $key!='firby-filename' && $key!='languagecode'){
-								$currentfile->update(array($key=>$value),'de');	
+								$currentfile->update(array($key=>$value),$languagecode);	
 							}
 						}
 						$json['message'] = array('type'=>'success');
@@ -586,7 +585,7 @@ if(get('firby-username') and get('firby-password') ){
 							'size'=>(string)$currentfile->size(),
 							'dimension'=>$dimension
 						);
-						$json['metadata'] = $currentfile->meta()->toArray();
+						$json['metadata'] = $currentfile->meta($languagecode)->toArray();
 						$json['message'] = array('type'=>'success');
 					} catch(Exception $e) {
 						$json['message'] = array('type'=>'error');
