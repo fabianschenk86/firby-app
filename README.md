@@ -34,6 +34,7 @@ sendnotification(array('username1','username2',..),array('title'=>'Your title','
 <li>someone buy something (Shopkit Plugin),</li>
 <li>...</li>
 </ul></p>
+<img src="https://github.com/fabianschenk86/firby-app/blob/master/img/firby-notification.jpg" alt="Push Notification with GCM"/>
 <br /><h4 id="firby-coming-soon">Coming soon:</h4>
 <ul>
 <li>moderate comments</li>
