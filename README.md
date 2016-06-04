@@ -20,10 +20,14 @@
 <br /><h4 id="firby-languages">Multi languages:</h4>
 <p>Firby App is available in the same languages like Kirby CMS:<br /><br />
 <em>English, German, French, Italian, Spanish, Swedish, Finnish, Dutch, Czech, Danish, Hungarian, Indonesian, Polish, Romanian, Turkish, Portuguese (Brazil), Norwegian (Bokmål), Russian, Persian (Farsi), Arabic, Chinese (Simplified), Chinese (Traditional), Japanese, Bulgarian, Catalan</em></p>
+<br /><h4>Push Notification</h4>
+<p></p>
+```yaml
+sendnotification(array('username1','username2',..),array('title'=>'Your title','message'=>'Here comes the example test message'));
+```
 <br /><h4 id="firby-coming-soon">Coming soon:</h4>
 <ul>
 <li>moderate comments</li>
-<li>Push Notifications</li>
 <li>Texteditor with Markdown to Html - Html to Markdown Converter</li>
 <li>Firby App for:
 <ol>- Windows Phone</ol>
