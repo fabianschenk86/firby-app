@@ -28,10 +28,10 @@ sendnotification(array('username1','username2',..),array('title'=>'Your title','
 ?>
 ```
 <p><strong>For Example you can sent Notification when</strong><br/><ul>
-<li>someone write a new guestbook,chat or forum entry </li>
-<li>new User has been created</li>
-<li>someone clicked a like/share od download button</li>
-<li>someone buy something (Shopkit Plugin)</li>
+<li>someone write a new guestbook, chat or forum entry,</li>
+<li>new User has been created,</li>
+<li>someone clicked a like, share or download button,</li>
+<li>someone buy something (Shopkit Plugin),</li>
 <li>...</li>
 </ul></p>
 <br /><h4 id="firby-coming-soon">Coming soon:</h4>
