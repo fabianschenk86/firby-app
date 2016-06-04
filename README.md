@@ -21,10 +21,19 @@
 <p>Firby App is available in the same languages like Kirby CMS:<br /><br />
 <em>English, German, French, Italian, Spanish, Swedish, Finnish, Dutch, Czech, Danish, Hungarian, Indonesian, Polish, Romanian, Turkish, Portuguese (Brazil), Norwegian (Bokmål), Russian, Persian (Farsi), Arabic, Chinese (Simplified), Chinese (Traditional), Japanese, Bulgarian, Catalan</em></p>
 <br /><h4>Push Notification</h4>
-<p></p>
+<p>With this function you can send push notifications to your devices straight from your Kirby based websites, in real-time.</p>
 ```yaml
+<?php
 sendnotification(array('username1','username2',..),array('title'=>'Your title','message'=>'Here comes the example test message'));
+?>
 ```
+<p><strong>For Example you can sent Notification when</strong><br/><ul>
+<li>someone write a new guestbook,chat or forum entry </li>
+<li>new User has been created</li>
+<li>someone clicked a like/share od download button</li>
+<li>someone buy something (Shopkit Plugin)</li>
+<li>...</li>
+</ul></p>
 <br /><h4 id="firby-coming-soon">Coming soon:</h4>
 <ul>
 <li>moderate comments</li>
