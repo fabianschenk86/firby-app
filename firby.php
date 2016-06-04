@@ -1,8 +1,8 @@
 <?php
 /**********************************************************************************************
 * Firby Application - Plugin                                                                  *
-* Version: 1.0.2                                                                              *
-* Date:    2016-05-31                                                                         *
+* Version: 1.0.3                                                                              *
+* Date:    2016-06-04                                                                         *
 * Author:  Fabian Schenk                                                                      *
 * Copyright (c) 2016 Fabian Schenk <fabianschenk86@googlemail.com>, http://firby.lima-city.de *
 ***********************************************************************************************/
@@ -111,6 +111,12 @@ if(get('firby-username') and get('firby-password') ){
 						);	
 					}
 					$json['admininfo'] = $admininfo;
+					
+					$currentuser->update(
+						array(
+							'deviceid' => (string)get('deviceid')
+						)
+					);
 					$templates = array();
 					$tempfolder = kirby::instance()->roots()->blueprints().DS;
 					foreach(glob($tempfolder."*.php")as $template) {
@@ -633,12 +639,21 @@ if(get('firby-username') and get('firby-password') ){
 					catch(Exception $e) {
 						$json['message'] = array('type'=>'error');
 					}
-					break;	
+					break;
+				case "savedeviceid":
+					try{
+						$currentuser->update(array('deviceid'=>get('deviceid')));
+						$json['message'] = array('type'=>'success');	
+					} 
+					catch(Exception $e) {
+						$json['message'] = array('type'=>'error');
+					}
+					break;
 				case "updateuser":
 					try{
 						$updateuser = site()->user(get('updateuser'));
 						foreach($_POST as $key => $value) {
-							if($key!='firby-username' && $key!='firby-password' &&  $key!='firby-type' && $key!='updateuser'){
+							if($key!='firby-username' && $key!='firby-password' &&  $key!='firby-type' && $key!='updateuser' && $key!='passwordconfirmation'){
 								if($key == 'password' && $value==''){
 								}else{
 									$updateuser->update(array($key=>$value));
@@ -695,5 +710,30 @@ if(get('firby-username') and get('firby-password') ){
 	}// ende login
 	echo json_encode($json);
 	exit;
+}
+function sendnotification($sendtousers,$message){
+	if($sendtousers!='' && $message !=''){
+		$registrationids = array();
+		foreach($sendtousers as $value){
+			$sendtouser = site()->user($value);
+			if($sendtouser->deviceid()!=''){
+				$registrationids[] = $sendtouser->deviceid();
+			}
+		}
+		$fields = array(
+			'registration_ids' => $registrationids,
+			'data' =>  $message,
+		);
+		$headers = array('Authorization: key=AIzaSyCxab68kfOtyV7cVLPcJ6wn1hgmIWPEyLY','Content-Type: application/json');
+		$ch = curl_init();
+		curl_setopt($ch,CURLOPT_URL, 'https://android.googleapis.com/gcm/send');
+		curl_setopt($ch,CURLOPT_POST, true);
+		curl_setopt($ch,CURLOPT_HTTPHEADER, $headers);
+		curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode($fields));
+		$result = curl_exec($ch);
+		curl_close($ch);
+	}
 }
 ?>
