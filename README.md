@@ -5,7 +5,7 @@
 <hr width="100%"/>
 <h2 id="firby-features">Features include:</h2>
 <h4>Manage multiple Kirby websites</h4>
-<p>...</p>
+<p>Manage multiple Kirby based Websites Under One Account. You can add as many sites as you need under one account! </p>
 <img align="center" width="100%" src="https://github.com/fabianschenk86/firby-app/blob/master/img/multible-websites.jpg" alt="Manage multiple Websites"/>
 <br/>
 <h4>Available Panel Fields:</h4>
@@ -28,7 +28,7 @@
 sendnotification(array('username1','username2',..),array('title'=>'Your title','message'=>'Here comes the example test message'));
 ?>
 ```
-<p><strong>For Example you can sent Notification when</strong><br/><ul>
+<p><strong>For Example you can send notifications pushed through your devices if</strong><br/><ul>
 <li>someone write a new guestbook, chat or forum entry,</li>
 <li>new User has been created,</li>
 <li>someone clicked a like, share or download button,</li>
