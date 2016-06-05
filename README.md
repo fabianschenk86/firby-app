@@ -5,7 +5,7 @@
 <hr width="100%"/>
 <h2 id="firby-features">Features include:</h2>
 <h4>Manage multiple Kirby websites</h4>
-<p>Manage multiple Kirby based Websites Under One Account. You can add as many sites as you need under one account! </p>
+<p></p>
 <img align="center" width="100%" src="https://github.com/fabianschenk86/firby-app/blob/master/img/multible-websites.jpg" alt="Manage multiple Websites"/>
 <br/>
 <h4>Available Panel Fields:</h4>
