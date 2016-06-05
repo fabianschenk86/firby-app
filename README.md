@@ -25,7 +25,7 @@
 <p>With this function you can send your own push notifications to your Android devices straight from your Kirby based websites, in real-time.</p>
 ```yaml
 <?php
-sendnotification(array('username1','username2',..),array('title'=>'Your title','message'=>'Here comes the example test message'));
+sendnotification(array('username1','username2',..),array('title'=>'Your title','message'=>'Here comes the example message'));
 ?>
 ```
 <p><strong>For Example you can send notifications pushed through your devices if</strong><br/><ul>
