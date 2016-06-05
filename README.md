@@ -21,7 +21,7 @@
 <p>Firby App is available in the same languages like Kirby CMS:<br /><br />
 <em>English, German, French, Italian, Spanish, Swedish, Finnish, Dutch, Czech, Danish, Hungarian, Indonesian, Polish, Romanian, Turkish, Portuguese (Brazil), Norwegian (Bokmål), Russian, Persian (Farsi), Arabic, Chinese (Simplified), Chinese (Traditional), Japanese, Bulgarian, Catalan</em></p>
 <br /><h4>Push Notification</h4>
-<p>With this function you can send push notifications to your devices straight from your Kirby based websites, in real-time.</p>
+<p>With this function you can send your own push notifications to your Android devices straight from your Kirby based websites, in real-time.</p>
 ```yaml
 <?php
 sendnotification(array('username1','username2',..),array('title'=>'Your title','message'=>'Here comes the example test message'));
