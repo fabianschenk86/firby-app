@@ -38,6 +38,8 @@ sendnotification(array('username1','username2',..),array('title'=>'Your title','
 <br /><h4 id="firby-coming-soon">Coming soon:</h4>
 <ul>
 <li>moderate comments</li>
+<li>Live Support Chat with admin (chat box at the bottom like Facebook chat)</li>
+<li>Chat between registered users</li>
 <li>Texteditor with Markdown to Html - Html to Markdown Converter</li>
 <li>Firby App for:
 <ol>- Windows Phone</ol>
