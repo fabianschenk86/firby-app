@@ -2,7 +2,7 @@
 /**********************************************************************************************
 * Firby Application - Plugin                                                                  *
 * Version: 1.0.3                                                                              *
-* Date:    2016-06-04                                                                         *
+* Date:    2016-07-07                                                                         *
 * Author:  Fabian Schenk                                                                      *
 * Copyright (c) 2016 Fabian Schenk <fabianschenk86@googlemail.com>, http://firby.lima-city.de *
 ***********************************************************************************************/
