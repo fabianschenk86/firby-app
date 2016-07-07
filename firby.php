@@ -260,6 +260,36 @@ if(get('firby-username') and get('firby-password') ){
 						}else{
 							$content = (string)$currentpage->content(get('firby-language'))->$key();
 						}
+						if($value['type'] == 'select'){
+							if($value['options'] == 'field'){
+								if(isset($value['field']['page'])){$fp = site()->page($value['field']['page']);}else {$fp = $currentpage;}
+								if(isset($value['field']['name'])){$sf = $fps->$value['field']['name']();}else {$sf = $fps->tags();}
+								if(isset($value['field']['separator'])){$fs = $fps->$value['field']['separator']();}else {$fs = ',';}
+								$sf = explode($fs, $sf);$value['options'] = array();foreach($sf as $f){$value['options'][$f] = $f;}
+							}else if($value['options'] == 'query'){
+								if(isset($value['query']['page'])){$qp = site()->page($value['query']['page']);}else {$qp = $currentpage;}
+								if(isset($value['query']['fetch'])){if($value['query']['fetch'] == 'pages'){$qp = site()->index();}else{$qp = $qp->$value['query']['fetch']();}}else{$qp = $qp->children();}
+								if(isset($value['query']['template'])){$qp = $qp->filterBy('template', $value['query']['template']);}
+								if(isset($value['query']['flip']) && $value['query']['flip'] == 'true'){$qp = $qp->flip();}
+								if(!isset($value['query']['value'])){$value['query']['value'] = '{{uid}}';}
+								if(!isset($value['query']['text'])){$value['query']['text'] = '{{title}}';}
+								$value['options'] = array();foreach($qp as $p){$pagearray = $p->toArray();$pattern = '/{{(.*?)}}/';preg_match_all($pattern, $value['query']['text'], $querytext );preg_match_all($pattern, $value['query']['value'], $queryvalue );$cqt = $value['query']['text'];foreach($querytext[0] as $key=>$singelquery){$cqt = str_replace($querytext[0][$key], (string)$pagearray[$querytext[1][$key]], $cqt);}$cqv = $value['query']['value'];foreach($queryvalue[0] as $key=>$singelquery){$cqv = str_replace($queryvalue[0][$key], (string)$pagearray[$queryvalue[1][$key]], $cqv);}$value['options'][$cqv] = $cqt;}
+							}else if($value['options'] == 'siblings' || $value['options'] == 'children' || $value['options'] == 'files' || $value['options'] == 'images' || $value['options'] == 'documents' || $value['options'] == 'videos' || $value['options'] == 'audio' || $value['options'] == 'code' || $value['options'] == 'archives'){
+								$selectpages = $currentpage->$value['options']();if($value['options'] == 'siblings' || $value['options'] == 'children'){$value['options'] = array();foreach($selectpages as $p){$value['options'][(string)$p->uid()] = (string)$p->title();}}else{$value['options'] = array();foreach($selectpages as $p){$value['options'][(string)$p->filename()] = (string)$p->filename();}}
+							}else if($value['options'] == 'grandchildren'){
+								$value['options'] = array();$qp = $currentpage->grandChildren();foreach($qp as $p){$pagearray = $p->toArray();$value['options'][$pagearray['uid']] = $pagearray['title'];}
+							}else if($value['options'] == 'visibleChildren'){
+								$value['options'] = array();$qp = $currentpage->children()->visible();foreach($qp as $p){$pagearray = $p->toArray();$value['options'][$pagearray['uid']] = $pagearray['title'];}
+							}else if($value['options'] == 'invisibleChildren'){
+								$value['options'] = array();$qp = $currentpage->children()->invisible();foreach($qp as $p){$pagearray = $p->toArray();$value['options'][$pagearray['uid']] = $pagearray['title'];}
+							}else if($value['options'] == 'visibleSiblings'){
+								$value['options'] = array();$siblings = $currentpage->siblings()->visible();foreach($siblings as $p){$pagearray = $p->toArray();$value['options'][$pagearray['uid']] = $pagearray['title'];}
+							}else if($value['options'] == 'invisibleSiblings'){
+								$value['options'] = array();$siblings = $currentpage->siblings()->invisible();foreach($siblings as $p){$pagearray = $p->toArray();$value['options'][$pagearray['uid']] = $pagearray['title'];}
+							}else if($value['options'] == 'pages'){
+								$value['options'] = array();$pages = site()->index();foreach($pages as $p){$pagearray = $p->toArray();$value['options'][$pagearray['uid']] = $pagearray['title'];}
+							}
+						}
 						$fields[] = array(
 						'key'=>$key,
 						'blueprint'=>$value,
