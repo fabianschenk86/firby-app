@@ -1,12 +1,12 @@
 <?php
 /**********************************************************************************************
 * Firby Application - Plugin                                                                  *
-* Version: 1.0.3                                                                              *
-* Date:   2016-07-07                                                                         *
+* Version: 1.0.4                                                                              *
+* Date:    2016-07-12                                                                         *
 * Author:  Fabian Schenk                                                                      *
 * Copyright (c) 2016 Fabian Schenk <fabianschenk86@googlemail.com>, http://firby.lima-city.de *
 ***********************************************************************************************/
-
+error_reporting(E_ALL ^  E_NOTICE);
 if(get('firby-username') and get('firby-password') ){
 	header('Access-Control-Allow-Origin: *');
 	header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
@@ -38,6 +38,29 @@ if(get('firby-username') and get('firby-password') ){
 				return $history;
 			}
 			switch (get('firby-type')) {
+				case "firbychat":
+					if($currentuser->chathistory()!=''){
+						$chathistory = $currentuser->chathistory();
+					}else{
+						$chathistory = array();
+					}
+					if(get('sentmessage')!=''){
+						$message = array(
+							'title'=>'Support',
+							'username'=>'fabian@test.de',
+							'type'=>'getchat',
+							'date'=>date('Y-m-d'),
+							'message'=>get('sentmessage')
+						);
+						$chathistory['fabian@test.de'][] = $message;
+						$currentuser->update(array('chathistory'=>$chathistory));
+		
+						/*sendnotification(array('fabian'),$message);*/
+					}
+					$json['message'] = array('type'=>'success','test'=>'test');
+					$json['chatdata'] = $chathistory['fabian@test.de'];
+					
+					break;
 				case "addwebsite":
 					$json['title'] = (string)site()->title();
 					$json['url'] = (string)site()->url();
@@ -186,9 +209,15 @@ if(get('firby-username') and get('firby-password') ){
 										'blueprint'=>$subblueprints,
 										'content'=>$subvalue,
 									);
-								}
+								}		
 							}else{
 								$content = (string)site()->content()->$key();
+							}
+							if($value['type'] == 'select' && $value['options']== 'query'){
+								$value['dynamic']=array();
+								foreach(site()->page() as $selectpage){
+									$value['dynamic'][$selectpage->title()]+=$selectpage->title();
+								}
 							}
 							$fields[] = array(
 								'key'=>$key,
@@ -237,6 +266,7 @@ if(get('firby-username') and get('firby-password') ){
 					$blueprints = data::read(kirby::instance()->roots()->blueprints().DS.$currentpage->template().'.php', 'yaml');
 					$fields = array();
 					foreach ($blueprints['fields'] as $key=>$value) {
+						$inputname = $key;
 						if($value['type'] == 'structure'){
 							$subfields = array();
 							foreach($value['fields'] as $subkey=>$subfield){
@@ -252,7 +282,7 @@ if(get('firby-username') and get('firby-password') ){
 							$content = array();
 							foreach($currentpage->$key()->yaml() as $subvalue){
 								$content[] =  array(
-									'key'=>$key,
+									'key'=>$inputname,
 									'blueprint'=>$subblueprints,
 									'content'=>$subvalue,
 								);
@@ -276,24 +306,24 @@ if(get('firby-username') and get('firby-password') ){
 								$value['options'] = array();foreach($qp as $p){$pagearray = $p->toArray();$pattern = '/{{(.*?)}}/';preg_match_all($pattern, $value['query']['text'], $querytext );preg_match_all($pattern, $value['query']['value'], $queryvalue );$cqt = $value['query']['text'];foreach($querytext[0] as $key=>$singelquery){$cqt = str_replace($querytext[0][$key], (string)$pagearray[$querytext[1][$key]], $cqt);}$cqv = $value['query']['value'];foreach($queryvalue[0] as $key=>$singelquery){$cqv = str_replace($queryvalue[0][$key], (string)$pagearray[$queryvalue[1][$key]], $cqv);}$value['options'][$cqv] = $cqt;}
 							}else if($value['options'] == 'siblings' || $value['options'] == 'children' || $value['options'] == 'files' || $value['options'] == 'images' || $value['options'] == 'documents' || $value['options'] == 'videos' || $value['options'] == 'audio' || $value['options'] == 'code' || $value['options'] == 'archives'){
 								$selectpages = $currentpage->$value['options']();if($value['options'] == 'siblings' || $value['options'] == 'children'){$value['options'] = array();foreach($selectpages as $p){$value['options'][(string)$p->uid()] = (string)$p->title();}}else{$value['options'] = array();foreach($selectpages as $p){$value['options'][(string)$p->filename()] = (string)$p->filename();}}
-							}else if($value['options'] == 'grandchildren'){
+							}else if($value['options']== 'grandchildren'){
 								$value['options'] = array();$qp = $currentpage->grandChildren();foreach($qp as $p){$pagearray = $p->toArray();$value['options'][$pagearray['uid']] = $pagearray['title'];}
-							}else if($value['options'] == 'visibleChildren'){
+							}else if($value['options']== 'visibleChildren'){
 								$value['options'] = array();$qp = $currentpage->children()->visible();foreach($qp as $p){$pagearray = $p->toArray();$value['options'][$pagearray['uid']] = $pagearray['title'];}
-							}else if($value['options'] == 'invisibleChildren'){
+							}else if($value['options']== 'invisibleChildren'){
 								$value['options'] = array();$qp = $currentpage->children()->invisible();foreach($qp as $p){$pagearray = $p->toArray();$value['options'][$pagearray['uid']] = $pagearray['title'];}
-							}else if($value['options'] == 'visibleSiblings'){
+							}else if($value['options']== 'visibleSiblings'){
 								$value['options'] = array();$siblings = $currentpage->siblings()->visible();foreach($siblings as $p){$pagearray = $p->toArray();$value['options'][$pagearray['uid']] = $pagearray['title'];}
-							}else if($value['options'] == 'invisibleSiblings'){
+							}else if($value['options']== 'invisibleSiblings'){
 								$value['options'] = array();$siblings = $currentpage->siblings()->invisible();foreach($siblings as $p){$pagearray = $p->toArray();$value['options'][$pagearray['uid']] = $pagearray['title'];}
-							}else if($value['options'] == 'pages'){
+							}else if($value['options']== 'pages'){
 								$value['options'] = array();$pages = site()->index();foreach($pages as $p){$pagearray = $p->toArray();$value['options'][$pagearray['uid']] = $pagearray['title'];}
 							}
 						}
 						$fields[] = array(
-						'key'=>$key,
-						'blueprint'=>$value,
-						'content'=>$content
+							'key'=>$inputname,
+							'blueprint'=>$value,
+							'content'=>$content
 						);
 					};
 					$json['content'] = $fields;
@@ -741,6 +771,8 @@ if(get('firby-username') and get('firby-password') ){
 	echo json_encode($json);
 	exit;
 }
+
+
 function sendnotification($sendtousers,$message){
 	if($sendtousers!='' && $message !=''){
 		$registrationids = array();
