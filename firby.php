@@ -6,8 +6,8 @@
 * Author:  Fabian Schenk                                                                      *
 * Copyright (c) 2016 Fabian Schenk <fabianschenk86@googlemail.com>, http://firby.lima-city.de *
 ***********************************************************************************************/
-error_reporting(E_ALL ^  E_NOTICE);
 if(get('firby-username') and get('firby-password') ){
+	error_reporting(E_ALL ^  E_NOTICE);
 	header('Access-Control-Allow-Origin: *');
 	header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
 	header('Content-Type: application/json');	
